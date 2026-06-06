@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+comandos_ultima_sessao.txt
+
+# Histórico pessoal de comandos
+comandos_ultima_sessao.txt
+
+# Dados brutos
+data/raw/**/*.zip
+
+# Arquivos muito grandes
+*.parquet
+*.feather
+
+# Arquivos temporários
+*.tmp
+
+# Dados brutos descompactados
+data/raw/**/*.csv
