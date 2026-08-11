@@ -83,7 +83,45 @@ Valores:
 
 ## Conclusões da Sprint 1
 
-Foram identificadas duas fontes de dados complementares:
+---
+
+## Decisão sobre o Dataset de Fraude
+
+Foram consideradas duas alternativas para a fonte de dados de fraude financeira:
+
+- Credit Card Fraud Detection (`creditcard.csv`)
+- IEEE-CIS Fraud Detection
+
+Foi decidido utilizar o dataset `creditcard.csv` neste projeto.
+
+### Justificativa
+
+A escolha foi baseada no equilíbrio entre complexidade, valor técnico e capacidade de conclusão do projeto.
+
+O dataset `creditcard.csv` possui aproximadamente 284 mil transações e 31 colunas, incluindo a variável alvo `Class`, permitindo construir um pipeline completo de Engenharia de Dados com:
+
+- ingestão;
+- processamento;
+- armazenamento em formato Parquet;
+- arquitetura Medallion;
+- Data Quality;
+- SQL;
+- modelagem dimensional;
+- Airflow;
+- monitoramento;
+- dashboard.
+
+O dataset IEEE-CIS foi considerado uma alternativa mais complexa, principalmente por possuir múltiplas tabelas, maior quantidade de atributos e maior necessidade de tratamento e integração.
+
+Para o objetivo deste projeto, que é demonstrar competências de Engenharia de Dados em nível Júnior, optou-se por priorizar a conclusão de uma plataforma ponta a ponta funcional em vez de aumentar a complexidade da fonte de dados.
+
+### Trade-off
+
+A principal vantagem do IEEE-CIS seria proporcionar um cenário mais complexo e próximo de determinados ambientes corporativos.
+
+Por outro lado, sua utilização aumentaria significativamente a complexidade do projeto e poderia comprometer a conclusão das demais etapas do pipeline.
+
+Portanto, o `creditcard.csv` foi considerado mais adequado ao escopo atual do projeto.Foram identificadas duas fontes de dados complementares:
 
 1. Base SUSEP, utilizada para análise do mercado segurador brasileiro.
 2. Base de fraude financeira, utilizada para simular cenários de detecção de anomalias.
