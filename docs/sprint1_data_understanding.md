@@ -89,3 +89,24 @@ Foram identificadas duas fontes de dados complementares:
 2. Base de fraude financeira, utilizada para simular cenários de detecção de anomalias.
 
 Essas bases servirão como fonte para a construção do Data Lake e das próximas etapas do pipeline de engenharia de dados.
+
+---
+
+## Volume e Periodicidade — Base SUSEP (Ses_seguros.csv)
+
+- Total de linhas: 1.784.838
+- Total de colunas: 21
+- Período coberto (damesano): 199501 a 202603
+- Quantidade de períodos distintos: 375 (aproximadamente 31 anos de série histórica)
+
+### Colunas principais
+
+damesano, coenti, cogrupo, coramo, premio_direto, premio_de_seguros, premio_retido,
+premio_ganho, sinistro_direto, sinistro_retido, desp_com, premio_emitido2,
+premio_emitido_cap, despesa_resseguros, sinistro_ocorrido, receita_resseguro,
+sinistros_ocorridos_cap, recuperacao_sinistros_ocorridos_cap, rvne, conveniodpvat,
+consorciosefundos
+
+Esse volume e granularidade mensal (damesano) confirmam viabilidade para construção
+de uma dimensão tempo robusta na camada Gold, com histórico suficiente para análises
+de série temporal e evolução de sinistralidade por seguradora e ramo.
