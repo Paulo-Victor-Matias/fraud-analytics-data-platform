@@ -233,3 +233,4 @@ data/raw/**/*.zip
 
 # Dados brutos descompactados
 data/raw/**/*.csv
+logs/*.log
