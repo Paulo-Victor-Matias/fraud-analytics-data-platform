@@ -52,7 +52,7 @@ creditcard.csv
 
 ### Volume
 
-284.808 registros
+284.807 (confirmado via pipeline) registros
 
 31 colunas
 
