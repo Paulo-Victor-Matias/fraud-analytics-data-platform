@@ -11,6 +11,7 @@ TABELAS = {
     "Ses_seguros.csv": "susep_seguros.parquet",
     "Ses_cias.csv": "susep_cias.parquet",
     "Ses_ramos.csv": "susep_ramos.parquet",
+    "Ses_cias.xlsx": "susep_cias_xlsx.parquet",
 }
 
 Path("logs").mkdir(parents=True, exist_ok=True)
@@ -28,6 +29,7 @@ logger = logging.getLogger("ingest_susep")
 
 def extract(nome_arquivo):
     caminho = f"{RAW_DIR}/{nome_arquivo}"
+    extensao = Path(nome_arquivo).suffix.lower()
     logger.info("Iniciando extração de: %s", caminho)
 
     if not Path(caminho).exists():
@@ -35,9 +37,15 @@ def extract(nome_arquivo):
         raise FileNotFoundError(f"Arquivo não encontrado: {caminho}")
 
     try:
-        df = pd.read_csv(caminho, sep=";", encoding="latin-1", low_memory=False)
+        if extensao == ".csv":
+            df = pd.read_csv(caminho, sep=";", encoding="latin-1", low_memory=False)
+        elif extensao == ".xlsx":
+            df = pd.read_excel(caminho)
+        else:
+            logger.error("Extensão não suportada: %s", extensao)
+            raise ValueError(f"Extensão não suportada: {extensao}")
     except Exception:
-        logger.exception("Falha ao ler o arquivo CSV: %s", caminho)
+        logger.exception("Falha ao ler o arquivo: %s", caminho)
         raise
 
     if len(df) == 0:
